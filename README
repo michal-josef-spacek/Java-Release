@@ -33,7 +33,7 @@ EXAMPLE
      my $java_jdk_release = $ARGV[0];
 
      # Parse Java JDK release name.
-     my $release_hr = parse_java_jdk_release($java_release);
+     my $release_hr = parse_java_jdk_release($java_jdk_release);
 
      p $release_hr;
 
@@ -55,6 +55,10 @@ LICENSE AND COPYRIGHT
     © 2020 Michal Josef Špaček
 
     BSD 2-Clause License
+
+DEDICATION
+    Thanks for java-package
+    <https://salsa.debian.org/java-team/java-package.git> project.
 
 VERSION
     0.01
