@@ -117,6 +117,10 @@ L<http://skim.cz>
 
 BSD 2-Clause License
 
+=head1 DEDICATION
+
+Thanks for L<java-package|https://salsa.debian.org/java-team/java-package.git> project.
+
 =head1 VERSION
 
 0.01
