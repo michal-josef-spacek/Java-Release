@@ -1,8 +1,10 @@
 use strict;
 use warnings;
 
+use English;
+use Error::Pure::Utils qw(clean);
 use Java::Release qw(parse_java_jdk_release);
-use Test::More 'tests' => 3;
+use Test::More 'tests' => 4;
 use Test::NoWarnings;
 
 # Test.
@@ -32,3 +34,10 @@ is_deeply(
 	},
 	'Detect JDK 7.',
 );
+
+# Test.
+eval {
+	parse_java_jdk_release('foo-bar');
+};
+is($EVAL_ERROR, "Unsupported release.\n", 'Cannot parse release name.');
+clean();
