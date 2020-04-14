@@ -1,5 +1,5 @@
 ---
-abstract: 'Process Java releases.'
+abstract: 'Parse Java release archives.'
 author:
   - 'Michal Josef Spacek <skim@cpan.org>'
 build_requires:
