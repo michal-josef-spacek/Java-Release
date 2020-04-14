@@ -16,6 +16,7 @@ MANIFEST			This list of files
 META.yml
 README
 Release.pm
+SIGNATURE
 t/Java-Release/01-use.t
 t/Java-Release/02-version.t
 t/Java-Release/03-parse_java_jdk_release.t
