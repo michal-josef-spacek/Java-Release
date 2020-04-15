@@ -4,7 +4,7 @@ use warnings;
 use English;
 use Error::Pure::Utils qw(clean);
 use Java::Release qw(parse_java_jdk_release);
-use Test::More 'tests' => 7;
+use Test::More 'tests' => 8;
 use Test::NoWarnings;
 
 # Test.
@@ -77,6 +77,22 @@ is_deeply(
 		'j2se_version_name' => '9 Update 4',
 	},
 	'Detect JDK 9.',
+);
+
+# Test.
+$ret_hr = parse_java_jdk_release('jdk-12_linux-x64_bin.tar.gz');
+is_deeply(
+	$ret_hr,
+	{
+		'j2se_release' => 12,
+		'j2se_interim' => undef,
+		'j2se_update' => undef,
+		'j2se_patch' => undef,
+		'j2se_arch' => 'x64',
+		'j2se_version' => '12',
+		'j2se_version_name' => '12 GA',
+	},
+	'Detect JDK 12.',
 );
 
 # Test.

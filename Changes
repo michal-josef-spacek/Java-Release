@@ -1,6 +1,7 @@
 0.03
  - Add support for arm32-vfp-hflt and arm64-vfp-hflt architectures.
  - Fix construction of j2se_version.
+ - Fix parsing of release without interim and update versions.
  - Update example.
 
 0.02 2020-04-15T18:20:25+02:00
