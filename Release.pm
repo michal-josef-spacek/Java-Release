@@ -18,9 +18,9 @@ sub parse_java_jdk_release {
 
 	my $release_hr = {};
 	if ($release_name =~ m/^jdk-([0-9]+)(u([0-9]+))?-linux-(i586|x64|amd64|arm-vfp-hflt|arm32-vfp-hflt|arm64-vfp-hflt)\.(bin|tar\.gz)$/ms) {
-		$release_hr->{j2se_arch} = $4;
 		$release_hr->{j2se_release} = $1;
 		$release_hr->{j2se_update} = $3;
+		$release_hr->{j2se_arch} = $4;
 		$release_hr->{j2se_version} = $release_hr->{j2se_release};
 		$release_hr->{j2se_version_name} = $release_hr->{j2se_release};
 		if ($release_hr->{j2se_update}) {
@@ -34,9 +34,10 @@ sub parse_java_jdk_release {
 	} elsif ($release_name =~ m/^jdk-([0-9]+)\.([0-9]+)\.([0-9]+)(\.([0-9]+))?_linux-(i586|x64|amd64|arm-vfp-hflt|arm32-vfp-hflt|arm64-vfp-hflt)_bin.tar.gz$/ms) {
 		$release_hr->{j2se_arch} = $6;
 		$release_hr->{j2se_release} = $1;
-		$release_hr->{j2se_update} = $3;
 		$release_hr->{j2se_interim} = $2;
+		$release_hr->{j2se_update} = $3;
 		$release_hr->{j2se_patch} = $5;
+		$release_hr->{j2se_arch} = $6;
 		$release_hr->{j2se_version} = $release_hr->{j2se_release}.'.'.
 			$release_hr->{j2se_interim}.'.'.
 			$release_hr->{j2se_update};
