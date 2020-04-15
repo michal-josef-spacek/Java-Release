@@ -1,6 +1,7 @@
 0.02
  - Add support for JDK 9 and above.
  - Change module description.
+ - Fix NAME in doc.
 
 0.01 2020-04-14T19:42:29+02:00
  - First version.

@@ -65,7 +65,7 @@ __END__
 
 =head1 NAME
 
-Java-Release - Parse Java release archive.
+Java::Release - Parse Java release archive.
 
 =head1 SYNOPSIS
 

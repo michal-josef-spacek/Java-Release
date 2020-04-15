@@ -1,5 +1,5 @@
 NAME
-    Java-Release - Parse Java release archive.
+    Java::Release - Parse Java release archive.
 
 SYNOPSIS
      use Java::Release qw(parse_java_jdk_release);
