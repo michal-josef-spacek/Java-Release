@@ -1,4 +1,4 @@
-0.02
+0.02 2020-04-15T18:20:25+02:00
  - Add support for JDK 9 and above.
  - Add Java::Release::Obj data object.
  - Change module description.
