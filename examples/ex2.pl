@@ -15,4 +15,13 @@ my $obj = Java::Release::Obj->new(
 p $obj;
 
 # Output like:
-# TODO
+# Java::Release::Obj  {
+#     Parents       Mo::Object
+#     public methods (0)
+#     private methods (0)
+#     internals: {
+#         arch      "i386",
+#         os        "linux",
+#         release   1
+#     }
+# }
