@@ -17,7 +17,7 @@ sub parse_java_jdk_release {
 	my $release_name = shift;
 
 	my $release_hr = {};
-	if ($release_name =~ m/^jdk-([0-9]+)(u([0-9]+))?-linux-(i586|x64|amd64|arm-vfp-hflt)\.(bin|tar\.gz)$/ms) {
+	if ($release_name =~ m/^jdk-([0-9]+)(u([0-9]+))?-linux-(i586|x64|amd64|arm-vfp-hflt|arm32-vfp-hflt|arm64-vfp-hflt)\.(bin|tar\.gz)$/ms) {
 		$release_hr->{j2se_arch} = $4;
 		$release_hr->{j2se_release} = $1;
 		$release_hr->{j2se_update} = $3;
@@ -31,7 +31,7 @@ sub parse_java_jdk_release {
 		} else {
 			$release_hr->{j2se_version_name} .= ' GA';
 		}
-	} elsif ($release_name =~ m/^jdk-([0-9]+)\.([0-9]+)\.([0-9]+)(\.([0-9]+))?_linux-(i586|x64|amd64|arm-vfp-hflt)_bin.tar.gz$/ms) {
+	} elsif ($release_name =~ m/^jdk-([0-9]+)\.([0-9]+)\.([0-9]+)(\.([0-9]+))?_linux-(i586|x64|amd64|arm-vfp-hflt|arm32-vfp-hflt|arm64-vfp-hflt)_bin.tar.gz$/ms) {
 		$release_hr->{j2se_arch} = $6;
 		$release_hr->{j2se_release} = $1;
 		$release_hr->{j2se_update} = $3;

@@ -4,7 +4,7 @@ use warnings;
 use English;
 use Error::Pure::Utils qw(clean);
 use Java::Release qw(parse_java_jdk_release);
-use Test::More 'tests' => 5;
+use Test::More 'tests' => 7;
 use Test::NoWarnings;
 
 # Test.
@@ -33,6 +33,34 @@ is_deeply(
 		'j2se_version_name' => '7 GA',
 	},
 	'Detect JDK 7.',
+);
+
+# Test.
+$ret_hr = parse_java_jdk_release('jdk-8u151-linux-arm32-vfp-hflt.tar.gz');
+is_deeply(
+	$ret_hr,
+	{
+		'j2se_release' => 8,
+		'j2se_update' => 151,
+		'j2se_arch' => 'arm32-vfp-hflt',
+		'j2se_version' => '8u151',
+		'j2se_version_name' => '8 Update 151',
+	},
+	'Detect JDK 8 (arm32-vfp-hflt).',
+);
+
+# Test.
+$ret_hr = parse_java_jdk_release('jdk-8u151-linux-arm64-vfp-hflt.tar.gz');
+is_deeply(
+	$ret_hr,
+	{
+		'j2se_release' => 8,
+		'j2se_update' => 151,
+		'j2se_arch' => 'arm64-vfp-hflt',
+		'j2se_version' => '8u151',
+		'j2se_version_name' => '8 Update 151',
+	},
+	'Detect JDK 8 (arm64-vfp-hflt).',
 );
 
 # Test.
