@@ -38,9 +38,16 @@ sub parse_java_jdk_release {
 		$release_hr->{j2se_update} = $3;
 		$release_hr->{j2se_patch} = $5;
 		$release_hr->{j2se_arch} = $6;
-		$release_hr->{j2se_version} = $release_hr->{j2se_release}.'.'.
-			$release_hr->{j2se_interim}.'.'.
-			$release_hr->{j2se_update};
+		$release_hr->{j2se_version} = $release_hr->{j2se_release};
+		if (defined $release_hr->{j2se_interim}) {
+			$release_hr->{j2se_version} .= '.'.$release_hr->{j2se_interim};
+			if (defined $release_hr->{j2se_update}) {
+				$release_hr->{j2se_version} .= '.'.$release_hr->{j2se_update};
+				if (defined $release_hr->{j2se_patch}) {
+					$release_hr->{j2se_version} .= '.'.$release_hr->{j2se_patch};
+				}
+			}
+		}
 		$release_hr->{j2se_version_name} = $release_hr->{j2se_release};
 		if ($release_hr->{j2se_update}) {
 			$release_hr->{j2se_version_name}
