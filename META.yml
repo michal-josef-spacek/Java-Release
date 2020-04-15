@@ -26,6 +26,7 @@ no_index:
     - t
     - xt
 requires:
+  Mo: 0
   Readonly: 0
   perl: 5.8.0
 resources:

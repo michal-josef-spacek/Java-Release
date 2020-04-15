@@ -15,6 +15,7 @@ author_requires 'Test::Pod' => 0;
 author_requires 'Test::Pod::Coverage' => 0;
 license 'bsd';
 name 'Java-Release';
+requires 'Mo' => 0;
 requires 'Readonly' => 0;
 requires 'perl' => '5.8.0';
 readme_from 'Release.pm';

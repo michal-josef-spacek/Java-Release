@@ -1,5 +1,6 @@
 0.02
  - Add support for JDK 9 and above.
+ - Add Java::Release::Obj data object.
  - Change module description.
  - Fix NAME in doc.
 
