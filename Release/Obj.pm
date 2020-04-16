@@ -3,7 +3,9 @@ package Java::Release::Obj;
 use strict;
 use warnings;
 
-use Mo qw(is required);
+use Error::Pure qw(err);
+use List::MoreUtils qw(none);
+use Mo qw(default coerce is required);
 
 our $VERSION = 0.04;
 
@@ -40,6 +42,52 @@ has update => (
 	is => 'ro',
 );
 
+# Version.
+sub version {
+	my $self = shift;
+
+	my $version = $self->release;
+
+	# Version like 'release'.'interim'.'update'.'patch'
+	if ($self->version_type eq 'new') {
+		if ($self->interim) {
+			$version .= '.'.$self->interim;
+			if ($self->update) {
+				$version .= '.'.$self->update;
+				if ($self->patch) {
+					$version .= '.'.$self->patch;
+				}
+			}
+		}
+
+	# Version like 'release'u'update'
+	} else {
+		if ($self->interim || $self->patch) {
+			err 'Cannot create old version of version with '.
+				'interim or patch value.';
+		}
+		if ($self->update) {
+			$version .= 'u'.$self->update;
+		}
+	}
+
+	return $version;
+}
+
+# Version type.
+has version_type => (
+	is => 'ro',
+	coerce => sub {
+		my $value = shift;
+		if ($value && none { $value eq $_ } qw(old new)) {
+			err "Bad version type. Possible values are 'new' or 'old'.",
+				'value', $value;
+		}
+		return $value;
+	},
+	default => 'new',
+);
+
 1;
 
 __END__
@@ -63,6 +111,8 @@ Java::Release::Obj - Data object for Java::Release.
  my $patch = $obj->patch;
  my $release = $obj->release;
  my $update = $obj->update;
+ my $version = $obj->version;
+ my $version_type = $obj->version_type;
 
 =head1 METHODS
 
@@ -126,6 +176,25 @@ Get update version number.
 
 Returns integer.
 
+=head2 C<version>
+
+ my $version = $obj->version;
+
+Get version of release. There are two possibilities to write: new and old
+version.
+
+Returns string.
+
+=head2 C<version_type>
+
+ my $version_type = $obj->version_type;
+
+Get type of version.
+
+Possible values are: new (1.1.100.1), old (8u234)
+
+Returns string.
+
 =head1 EXAMPLE
 
  use strict;
@@ -156,6 +225,8 @@ Returns integer.
 
 =head1 DEPENDENCIES
 
+L<Error::Pure>,
+L<List::MoreUtils>,
 L<Mo>.
 
 =head1 REPOSITORY
