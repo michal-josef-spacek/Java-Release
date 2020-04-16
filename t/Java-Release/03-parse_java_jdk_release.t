@@ -4,21 +4,22 @@ use warnings;
 use English;
 use Error::Pure::Utils qw(clean);
 use Java::Release qw(parse_java_jdk_release);
-use Test::More 'tests' => 8;
+use Test::More 'tests' => 9;
 use Test::NoWarnings;
 
 # Test.
-my $ret_hr = parse_java_jdk_release('jdk-7u15-linux-i586.tar.gz');
+my $ret_hr = parse_java_jdk_release('j2sdk-1_3_1_20-linux-i586.bin');
 is_deeply(
 	$ret_hr,
 	{
-		'j2se_release' => 7,
-		'j2se_update' => 15,
 		'j2se_arch' => 'i586',
-		'j2se_version' => '7u15',
-		'j2se_version_name' => '7 Update 15',
+		'j2se_interim' => 1,
+		'j2se_release' => 3,
+		'j2se_update' => 20,
+		'j2se_version' => '1.3.1.20',
+		'j2se_version_name' => '3 Major 1 Update 20',
 	},
-	'Detect JDK 7u15.',
+	'Detect JDK 3 (1.3).',
 );
 
 # Test.
@@ -33,6 +34,20 @@ is_deeply(
 		'j2se_version_name' => '7 GA',
 	},
 	'Detect JDK 7.',
+);
+
+# Test.
+$ret_hr = parse_java_jdk_release('jdk-7u15-linux-i586.tar.gz');
+is_deeply(
+	$ret_hr,
+	{
+		'j2se_release' => 7,
+		'j2se_update' => 15,
+		'j2se_arch' => 'i586',
+		'j2se_version' => '7u15',
+		'j2se_version_name' => '7 Update 15',
+	},
+	'Detect JDK 7u15.',
 );
 
 # Test.
