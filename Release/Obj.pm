@@ -74,6 +74,23 @@ sub version {
 	return $version;
 }
 
+# Version name.
+sub version_name {
+	my $self = shift;
+
+	my $version_name = 'Java '.$self->release;
+	if ($self->interim) {
+		$version_name .= ' Major '.$self->interim;
+	}
+	if ($self->update) {
+		$version_name .= ' Update '.$self->update;
+	} else {
+		$version_name .= ' GA';
+	}
+
+	return $version_name;
+}
+
 # Version type.
 has version_type => (
 	is => 'ro',
@@ -112,6 +129,7 @@ Java::Release::Obj - Data object for Java::Release.
  my $release = $obj->release;
  my $update = $obj->update;
  my $version = $obj->version;
+ my $version_name = $obj->version_name;
  my $version_type = $obj->version_type;
 
 =head1 METHODS
@@ -230,7 +248,16 @@ Returns integer.
 
  my $version = $obj->version;
 
-Get version of release. There are two possibilities to write: new and old
+Get version of release in dot notation. There are two possibilities to write: new and old
+version.
+
+Returns string.
+
+=head2 C<version_name>
+
+ my $version_name = $obj->version_name;
+
+Get version of release in character notation. There are two possibilities to write: new and old
 version.
 
 Returns string.
