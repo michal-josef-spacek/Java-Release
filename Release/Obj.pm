@@ -122,9 +122,59 @@ Java::Release::Obj - Data object for Java::Release.
 
 Constructor.
 
-Returns object.
+Returns instance of object.
 
 =over 8
+
+=item * C<arch>
+
+Architecture.
+
+Parameter is required.
+
+=item * C<interim>
+
+Interim version number.
+
+Parameter is optional.
+
+Default values is undef.
+
+=item * C<os>
+
+Operating system.
+
+Parameter is required.
+
+=item * C<patch>
+
+Patch version number.
+
+Parameter is optional.
+
+Default values is undef.
+
+=item * C<release>
+
+Release version number.
+
+Parameter is required.
+
+=item * C<update>
+
+Update version number.
+
+Parameter is optional.
+
+Default values is undef.
+
+=item * C<version_type>
+
+Version type. Possible values are 'old' (something like 8u234) and 'new' (something 1.1.100.1).
+
+Parameter is optional.
+
+Default value is 'new'.
 
 =back
 
