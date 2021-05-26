@@ -50,13 +50,15 @@ sub version {
 
 	# Version like 'release'.'interim'.'update'.'patch'
 	if ($self->version_type eq 'new') {
-		if ($self->interim) {
-			$version .= '.'.$self->interim;
-			if ($self->update) {
-				$version .= '.'.$self->update;
-				if ($self->patch) {
-					$version .= '.'.$self->patch;
-				}
+		if ($self->update) {
+			if ($self->interim) {
+				$version .= '.'.$self->interim;
+			} else {
+				$version .= '.0';
+			}
+			$version .= '.'.$self->update;
+			if ($self->patch) {
+				$version .= '.'.$self->patch;
 			}
 		}
 
