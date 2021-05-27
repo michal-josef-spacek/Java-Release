@@ -4,7 +4,7 @@
 
  [Java::Release::Obj]
  - Add parameters to doc.
- - Add version() and version_type() to Java::Release::Obj.
+ - Add version().
  - Add version_name().
 
 0.03 2020-04-15T19:18:55+02:00

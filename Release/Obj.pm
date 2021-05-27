@@ -44,12 +44,18 @@ has update => (
 
 # Version.
 sub version {
-	my $self = shift;
+	my ($self, $type) = @_;
+
+	if ($type && none { $type eq $_ } qw(old new)) {
+		err "Bad version type. Possible values are 'new' or 'old'.",
+			'type', $type;
+	}
+	$type //= 'new';
 
 	my $version = $self->release;
 
 	# Version like 'release'.'interim'.'update'.'patch'
-	if ($self->version_type eq 'new') {
+	if ($type eq 'new') {
 		if ($self->update) {
 			if ($self->interim) {
 				$version .= '.'.$self->interim;
@@ -93,20 +99,6 @@ sub version_name {
 	return $version_name;
 }
 
-# Version type.
-has version_type => (
-	is => 'ro',
-	coerce => sub {
-		my $value = shift;
-		if ($value && none { $value eq $_ } qw(old new)) {
-			err "Bad version type. Possible values are 'new' or 'old'.",
-				'value', $value;
-		}
-		return $value;
-	},
-	default => 'new',
-);
-
 1;
 
 __END__
@@ -130,9 +122,8 @@ Java::Release::Obj - Data object for Java::Release.
  my $patch = $obj->patch;
  my $release = $obj->release;
  my $update = $obj->update;
- my $version = $obj->version;
+ my $version = $obj->version($type);
  my $version_name = $obj->version_name;
- my $version_type = $obj->version_type;
 
 =head1 METHODS
 
@@ -188,14 +179,6 @@ Parameter is optional.
 
 Default values is undef.
 
-=item * C<version_type>
-
-Version type. Possible values are 'old' (something like 8u234) and 'new' (something 1.1.100.1).
-
-Parameter is optional.
-
-Default value is 'new'.
-
 =back
 
 =head2 C<arch>
@@ -248,10 +231,10 @@ Returns integer.
 
 =head2 C<version>
 
- my $version = $obj->version;
+ my $version = $obj->version($type);
 
-Get version of release in dot notation. There are two possibilities to write: new and old
-version.
+Get version of release in short notation. There are two possibilities for C<$type>: 'new' (12.0.3) and 'old' (12u3)
+string.
 
 Returns string.
 
@@ -261,16 +244,6 @@ Returns string.
 
 Get version of release in character notation. There are two possibilities to write: new and old
 version.
-
-Returns string.
-
-=head2 C<version_type>
-
- my $version_type = $obj->version_type;
-
-Get type of version.
-
-Possible values are: new (1.1.100.1), old (8u234)
 
 Returns string.
 

@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 use Java::Release::Obj;
-use Test::More 'tests' => 5;
+use Test::More 'tests' => 6;
 use Test::NoWarnings;
 
 # Test.
@@ -41,7 +41,16 @@ $obj = Java::Release::Obj->new(
 	os => 'linux',
 	release => 1,
 	update => 234,
-	version_type => 'old',
 );
-$ret = $obj->version;
+$ret = $obj->version('old');
 is($ret, '1u234', 'Get version (release and update, old format).');
+
+# Test.
+$obj = Java::Release::Obj->new(
+	arch => 'i386',
+	os => 'linux',
+	release => 1,
+	update => 234,
+);
+$ret = $obj->version('new');
+is($ret, '1.0.234', 'Get version (release and update, new format).');

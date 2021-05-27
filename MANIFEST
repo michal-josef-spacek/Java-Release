@@ -30,7 +30,6 @@ t/Java-Release-Obj/08-release.t
 t/Java-Release-Obj/09-update.t
 t/Java-Release-Obj/10-version.t
 t/Java-Release-Obj/11-version_name.t
-t/Java-Release-Obj/12-version_type.t
 t/Java-Release/01-use.t
 t/Java-Release/02-version.t
 t/Java-Release/03-parse_java_jdk_release.t
