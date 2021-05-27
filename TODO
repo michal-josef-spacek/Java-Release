@@ -1,8 +1,9 @@
 TODO
 ====
 1. Support other JDKs.
-2. Rewrite Java::Release to Java::Release::Obj.
 3.
 
 Applied
 =======
+2. Rewrite Java::Release to Java::Release::Obj.
+OK [20210527] skim
