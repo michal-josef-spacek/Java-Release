@@ -7,7 +7,7 @@ use Error::Pure qw(err);
 use List::MoreUtils qw(none);
 use Mo qw(default coerce is required);
 
-our $VERSION = 0.04;
+our $VERSION = 0.05;
 
 # Computer architecture
 has arch => (
@@ -306,6 +306,6 @@ BSD 2-Clause License
 
 =head1 VERSION
 
-0.04
+0.05
 
 =cut
