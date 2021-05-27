@@ -247,6 +247,13 @@ version.
 
 Returns string.
 
+=head1 ERRORS
+
+ version():
+         Bad version type. Possible values are 'new' or 'old'.
+                 type: %s
+         Cannot create old version of version with interim or patch value.
+
 =head1 EXAMPLE
 
  use strict;
