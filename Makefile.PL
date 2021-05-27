@@ -22,8 +22,7 @@ requires 'Readonly' => 0;
 requires 'perl' => '5.8.0';
 readme_from 'Release.pm';
 recursive_author_tests('xt');
-resources 'bugtracker' => 'https://rt.cpan.org/Public/Dist/Display.html'.
-	'?Name=Java-Release';
+resources 'bugtracker' => 'https://github.com/michal-josef-spacek/Java-Release/issues';
 resources 'homepage' => 'https://github.com/michal-josef-spacek/Java-Release';
 resources 'repository' => 'git://github.com/michal-josef-spacek/Java-Release';
 test_requires 'English' => 0;
