@@ -1,4 +1,6 @@
 0.05
+ [Common]
+ - Fix minimal version of Perl (// is in 5.10.0).
 
 0.04 2021-05-27T04:06:18+02:00
  [Common]

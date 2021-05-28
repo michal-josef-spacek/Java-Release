@@ -29,7 +29,7 @@ requires:
   List::MoreUtils: 0
   Mo: 0
   Readonly: 0
-  perl: 5.8.0
+  perl: 5.10.0
 resources:
   bugtracker: https://github.com/michal-josef-spacek/Java-Release/issues
   homepage: https://github.com/michal-josef-spacek/Java-Release

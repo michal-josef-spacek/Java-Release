@@ -19,7 +19,7 @@ requires 'Error::Pure' => 0;
 requires 'List::MoreUtils' => 0;
 requires 'Mo' => 0;
 requires 'Readonly' => 0;
-requires 'perl' => '5.8.0';
+requires 'perl' => '5.10.0';
 readme_from 'Release.pm';
 recursive_author_tests('xt');
 resources 'bugtracker' => 'https://github.com/michal-josef-spacek/Java-Release/issues';
