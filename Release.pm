@@ -11,7 +11,7 @@ use Readonly;
 # Constants.
 Readonly::Array our @EXPORT => qw(parse_java_jdk_release);
 
-our $VERSION = 0.05;
+our $VERSION = 0.06;
 
 # Parse Java JDK release.
 sub parse_java_jdk_release {
@@ -140,6 +140,6 @@ Thanks for L<java-package|https://salsa.debian.org/java-team/java-package.git> p
 
 =head1 VERSION
 
-0.05
+0.06
 
 =cut
